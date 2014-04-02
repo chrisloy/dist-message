@@ -14,17 +14,17 @@ object Worker extends App {
     }
   }
 
-  Thread.sleep(120 * 1000)
+  Thread.sleep(24 * 60 * 60 * 1000)
 }
 
-class Worker(x: Int) {
+class Worker(id: Int) {
 
   val con = ConnectionFactory.connect()
   val rc = con.subscribe("Work")
   val wc = con.publish("Ack")
 
   def reply(): Unit = {
-    wc.write(s"[worker $x] Found one!")
+    wc.write(s"[worker $id] Found one!")
   }
 
   def run(): Unit = {

@@ -13,17 +13,34 @@ object SenderCollector extends App{
   val wc = con.publish("Work")
   wc.write("Hello")
 
-  for (line <- lines) {
-    wc.write(line)
+  val times = 100
+
+  val linesList = lines.toList
+
+  1 to times foreach { _ =>
+    for (line <- linesList) {
+      wc.write(line)
+    }
   }
   wc.write("")
 
   val rc = con.subscribe("Ack")
 
+  var replies = 0
+
   def read(): Unit = {
-    println(rc.read().toString)
-    read()
+    replies += 1
+    if (replies % 100 == 0) {
+      print('.')
+    }
+    if (replies < times * 11) {
+      read()
+    }
   }
 
+  val before = System.currentTimeMillis
   read()
+  val after = System.currentTimeMillis
+
+  println(s"Time: ${after - before}ms")
 }
