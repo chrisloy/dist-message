@@ -6,7 +6,7 @@ import ExecutionContext.Implicits.global
 
 object Worker extends App {
 
-  val workers = 3
+  val workers = 2
 
   val fs = 1 to workers map { x =>
     future {

@@ -1,9 +1,9 @@
-package hungryworker
+package dag
 
 import com.zink.queue.ConnectionFactory
 
 
-object SenderCollector extends App{
+object Collector extends App {
 
   val fileName = "/Users/loyc01/Desktop/access-huge.log"
   val lines: Iterator[String] = scala.io.Source.fromFile(fileName).getLines()

@@ -1,9 +1,9 @@
-package hungryworker
+package dag
 
 import com.zink.queue.ConnectionFactory
 
 
-object SenderCollector extends App{
+class Sender(name: String) {
 
   val fileName = "/Users/loyc01/Desktop/access-huge.log"
   val lines: Iterator[String] = scala.io.Source.fromFile(fileName).getLines()
@@ -19,7 +19,6 @@ object SenderCollector extends App{
   }
   wc.write("")
 
-  val rc = con.subscribe("Ack")
 
   var replies = 0
 
