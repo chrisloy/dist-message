@@ -1,3 +1,5 @@
+package pubsub
+
 import com.zink.queue.ConnectionFactory
 
 object Read extends App {

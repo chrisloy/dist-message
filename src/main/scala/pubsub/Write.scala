@@ -1,3 +1,5 @@
+package pubsub
+
 
 import com.zink.queue._
 
@@ -8,7 +10,6 @@ object Write extends App {
   val con = ConnectionFactory.connect()
 
   val wc = con.publish("BBC7")
-  wc.write("Hello")
 
   for (line <- lines) {
     wc.write(line)
