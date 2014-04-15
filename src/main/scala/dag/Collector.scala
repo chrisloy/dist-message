@@ -3,7 +3,7 @@ package dag
 import com.zink.queue.ConnectionFactory
 
 
-object Collector extends App {
+object Collector {
 
   val fileName = "/Users/loyc01/Desktop/access-huge.log"
   val lines: Iterator[String] = scala.io.Source.fromFile(fileName).getLines()

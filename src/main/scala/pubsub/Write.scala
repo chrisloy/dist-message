@@ -3,7 +3,7 @@ package pubsub
 
 import com.zink.queue._
 
-object Write extends App {
+object Write {
   val fileName = "/Users/loyc01/Desktop/access.log"
   val lines: Iterator[String] = scala.io.Source.fromFile(fileName).getLines()
 

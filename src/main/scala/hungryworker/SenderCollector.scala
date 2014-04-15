@@ -3,7 +3,7 @@ package hungryworker
 import com.zink.queue.ConnectionFactory
 
 
-object SenderCollector extends App{
+object SenderCollector {
 
   val fileName = "/Users/loyc01/Desktop/access-huge.log"
   val lines: Iterator[String] = scala.io.Source.fromFile(fileName).getLines()

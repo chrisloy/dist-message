@@ -2,7 +2,7 @@ package pubsub
 
 import com.zink.queue.ConnectionFactory
 
-object Read extends App {
+object Read {
 
   val con = ConnectionFactory.connect()
   val rc = con.subscribe("BBC7")

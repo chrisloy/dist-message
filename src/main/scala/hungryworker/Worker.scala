@@ -4,7 +4,7 @@ import com.zink.queue._
 import scala.concurrent._
 import ExecutionContext.Implicits.global
 
-object Worker extends App {
+object Worker {
 
   val workers = 2
 
