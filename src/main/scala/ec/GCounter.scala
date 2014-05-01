@@ -1,6 +1,18 @@
 package ec
 
 import scala.collection.mutable
+import chrisloy.json.{JsonObject, JsonNumber, Json}
+
+object GCounter {
+
+  def fromJson(js: JsonObject) = {
+//    val js: JsonObject = Json.parse(s).asInstanceOf[JsonObject]
+    val map: Map[String, Long] = js.fields map {
+      case (k, v: JsonNumber) => k -> v.value.toLong
+    }
+    new GCounter(mutable.Map(map.toSeq: _*))
+  }
+}
 
 class GCounter(var map: mutable.Map[String, Long] = mutable.Map()) {
 
@@ -26,4 +38,9 @@ class GCounter(var map: mutable.Map[String, Long] = mutable.Map()) {
   def getForNode(name: String) = map.get(name) getOrElse 0L
 
   override def toString = s"${value.toString} $map"
+
+  val toJson: String = {
+    val m: Map[String, JsonNumber] = map.toMap map {case (k, v) => k -> Json(v)}
+    Json(m).render
+  }
 }

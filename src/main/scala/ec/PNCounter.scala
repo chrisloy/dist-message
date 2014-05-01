@@ -1,5 +1,17 @@
 package ec
 
+import chrisloy.json.{JsonObject, Json}
+
+object PNCounter {
+
+  def fromJson(js: JsonObject) = {
+    new PNCounter (
+      pos = GCounter.fromJson(js.fields("pos").asInstanceOf[JsonObject]),
+      neg = GCounter.fromJson(js.fields("neg").asInstanceOf[JsonObject])
+    )
+  }
+}
+
 class PNCounter(val pos: GCounter = new GCounter, val neg: GCounter = new GCounter) {
 
   def inc(node: String): Unit = inc(node, 1L)
@@ -19,4 +31,6 @@ class PNCounter(val pos: GCounter = new GCounter, val neg: GCounter = new GCount
   }
 
   override def toString = s"${value.toString}\tPos:$pos\tNeg:$neg"
+
+  def toJson = s"""{"pos":${pos.toJson},"neg":${neg.toJson}}"""
 }
