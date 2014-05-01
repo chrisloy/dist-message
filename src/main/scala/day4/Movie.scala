@@ -17,6 +17,6 @@ object Movie {
 case class Movie(id: Long, rating: PNCounter) {
 
   def toJson: String = {
-    s"""{"id":$id,"rating":${rating.toJson}"""
+    s"""{"id":$id,"rating":${rating.toJson}}"""
   }
 }

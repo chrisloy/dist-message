@@ -39,8 +39,9 @@ class GCounter(var map: mutable.Map[String, Long] = mutable.Map()) {
 
   override def toString = s"${value.toString} $map"
 
-  val toJson: String = {
+  def toJson: String = {
     val m: Map[String, JsonNumber] = map.toMap map {case (k, v) => k -> Json(v)}
+    println("gonna render " + m)
     Json(m).render
   }
 }
